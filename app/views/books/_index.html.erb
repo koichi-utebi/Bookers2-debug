@@ -20,7 +20,7 @@
           <% end %>
         </td>
         <td><%= book.body %></td>
-      </tr>
+        <td><%= render 'favorites/favorites', book: book %></td>
     <% end %>
   </tbody>
 </table>
