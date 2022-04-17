@@ -1,0 +1,25 @@
+<% book.book_comments.each do |book_comment| %>
+<div>
+  <span>
+    <%= link_to user_path(book_comment.user_id) do %>
+      <%= image_tag book_comment.user.get_profile_image, size:'50x50' %>
+    <% end %>
+  </span>
+  <span>
+    <%= book_comment.comment %>
+  </span>
+  <span>
+    <% if book_comment.user_id == current_user.id %>
+      <%= link_to 'Destroy', book_book_comments_path(book_comment.book, book_comment), method: :delete, 'data-comfirm' => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+    <% end %>
+  </span>
+</div>
+<div>
+  <%= link_to user_path(book_comment.user_id) do %>
+    <%= book_comment.user.name %>
+  <% end %>
+</div>
+<% end %>
+
+
+
