@@ -1,0 +1,49 @@
+<% if @range == "User" %>
+  <h2>Users serch result</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>image</td>
+        <th>name</td>
+        <th>introduction</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image, size:'50x50' %></td>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= user.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h2>Books serch result</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>image</td>
+        <th>title</td>
+        <th>opinion</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= image_tag book.user.get_profile_image, size: '50x50' %></td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+          </td>
+          <td><%= book.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
