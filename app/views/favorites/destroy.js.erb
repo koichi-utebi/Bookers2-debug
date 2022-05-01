@@ -1,1 +1,3 @@
-$('.favorite_btn_<%= @book.id %>').html("<%= j(render "favorites/favorite", book: @book) %>");
+document.addEventListener("turbolinks:load", function() {
+$('#favorite_buttons_<%= @book.id %>').html("<%= j(render "favorites/favorites", book: @book) %>");
+})
