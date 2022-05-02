@@ -32,7 +32,7 @@
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', book_path(@book), method: :delete, 'deta-conmfirm' => "本当に消しますか?", class: "btn btn-sm btn-danger" %></td>
             <% end %>
-            <td><%= render 'favorites/favorites', book: @book %></td>
+            <td id="favorite_buttons_<%= @book.id %>"><%= render 'favorites/favorites', book: @book %></td>
             <td>コメント数<%= @book.book_comments.count %></td>
           </tr>
         </tbody>
@@ -40,15 +40,8 @@
       <div>
         <%= render 'book_comments/comment', book: @book %>
       </div>
-      <div class="col-md-8">
-        <%= form_with model: [@book, @book_comment] do |f| %>
-          <div class="form_group">
-            <%= f.text_area :comment, class:'form-control' %>
-          </div>
-          <div class="form_group">
-            <%= f.submit "送信", class: 'btn btn-success' %>
-          </div>
-        <% end %>
+      <div id="comments_area", class="col-md-8">
+        <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
       </div>
     </div>
   </div>
