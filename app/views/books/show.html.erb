@@ -37,10 +37,10 @@
           </tr>
         </tbody>
       </table>
-      <div>
+      <div id="comment_area_<%= @book.id %>",>
         <%= render 'book_comments/comment', book: @book %>
       </div>
-      <div id="comments_area", class="col-md-8">
+      <div class="col-md-8">
         <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
       </div>
     </div>
