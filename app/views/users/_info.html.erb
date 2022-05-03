@@ -26,10 +26,9 @@
   </tr>
 </table>
 
-<div class='row'>
-  <% if user.id != current_user.id %>
-    <%= render 'follows/btn', user: user %>
-  <% else %>
+<div class='row', id="follow_btn_<%= user.id %>">
+  <%= render 'relationships/btn', user: user %>
+  <% if user.id == current_user.id %>
     <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
