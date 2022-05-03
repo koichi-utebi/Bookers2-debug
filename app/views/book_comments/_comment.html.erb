@@ -10,7 +10,7 @@
   </span>
   <span>
     <% if book_comment.user_id == current_user.id %>
-      <%= link_to 'Destroy', book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+      <%= link_to 'Destroy', book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
     <% end %>
   </span>
 </div>
