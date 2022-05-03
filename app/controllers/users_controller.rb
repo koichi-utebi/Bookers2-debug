@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update]
 
   def show
     @user = User.find(params[:id])
