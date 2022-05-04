@@ -3,5 +3,7 @@ $('#following_count').html("<%= j(render 'relationships/info_follows', user: @us
 $('#follower_count').html("<%= j(render 'relationships/info_followers', user: @user) %>");
 $('#current_following').html("<%= j(render 'relationships/info_follows', user: current_user) %>");
 $('#current_follower').html("<%= j(render 'relationships/info_followers', user: current_user) %>");
-$('#following_count_<%= @user.id %>').html("<%= j(render 'relationships/index_follows', user: @user) %>");
-$('#follower_count_<%= @user.id %>').html("<%= j(render 'relationships/index_followers', user: @user) %>");
+$('#index_following_count_<%= @user.id %>').html("follows:<%= @user.followings.count %>");
+$('#index_follower_count_<%= @user.id %>').html("followers:<%= @user.followers.count %>");
+$('#current_index_following_count').html("follows:<%= current_user.followings.count %>");
+$('#current_index_follower_count').html("followers:<%= current_user.followers.count %>");

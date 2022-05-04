@@ -11,10 +11,17 @@
       <tr>
         <td><%= image_tag user.get_profile_image, size: '80x80' %></td>
         <td><%= user.name %></td>
-        <td id="following_count_<%= user.id %>"><%= render 'relationships/index_follows', user: user %></td>
-        <td id="follower_count_<%= user.id %>"><%= render 'relationships/index_followers', user: user %></td>
+      <% if user.id != current_user.id %>
+        <td id="index_following_count_<%= user.id %>">follows:<%= user.followings.count %></td>
+        <td id="index_follower_count_<%= user.id %>">followers:<%= user.followers.count %></td>
         <td id ="follow_btn_<%= user.id %>"><%= render 'relationships/btn', user: user %></td>
         <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+      <% else %>
+        <td id="current_index_following_count">follows:<%= user.followings.count %></td>
+        <td id="current_index_follower_count">followers:<%= user.followers.count %></td>
+        <td></td>
+        <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+      <% end %>
       </tr>
     <% end %>
 
