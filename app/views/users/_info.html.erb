@@ -20,7 +20,7 @@
 <div class='row', id="follow_btn_<%= user.id %>">
   <%= render 'relationships/btn', user: user %>
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-   <%= link_to 'Begin Chat', chat_path(user.id) %>
+    <%= link_to 'Begin Chat', chat_path(user.id) %>
   <% end %>
   <% if user.id == current_user.id %>
     <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
