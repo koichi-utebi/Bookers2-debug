@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'chats/show'
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources  :chats, only: [:create]
   get 'relationships/followings'
   get 'relationships/followers'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
