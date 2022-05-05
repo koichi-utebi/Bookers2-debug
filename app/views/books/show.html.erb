@@ -33,7 +33,7 @@
             <td><%= link_to 'Destroy', book_path(@book), method: :delete, 'deta-conmfirm' => "本当に消しますか?", class: "btn btn-sm btn-danger" %></td>
             <% end %>
             <td id="favorite_buttons_<%= @book.id %>"><%= render 'favorites/favorites', book: @book %></td>
-            <td>コメント数<%= @book.book_comments.count %></td>
+            <td id="comment_count_<%= @book_comment.id %>">コメント数<%= @book.book_comments.count %></td>
           </tr>
         </tbody>
       </table>
