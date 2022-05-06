@@ -15,9 +15,9 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>today posts</th>
-              <th>previous day posts</th>
-              <th>today per previous day posts</th>
+              <th>today</th>
+              <th>previous day</th>
+              <th>today per previous day</th>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +30,31 @@
                 <% else %>
                   <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
                   <%= (@the_day_before * 100).round %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table_width">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>this week</th>
+              <th>last week</th>
+              <th>this week per last week</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @this_week_book.count %></td>
+              <td><%= @last_week_book.count %></td>
+              <td>
+                <% if @last_week_book.count == 0 %>
+                  There is no post from the last week
+                <% else %>
+                  <% @the_week_before = @this_week_book.count / @last_week_book.count.to_f %>
+                  <%= (@the_week_before * 100).round %>
                 <% end %>
               </td>
             </tr>

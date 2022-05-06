@@ -10,6 +10,8 @@ class Book < ApplicationRecord
 
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+  scope :created_this_week, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }
+  scope :created_last_week, -> { where(created_at: ((Time.current.at_end_of_day - 13.day).at_beginning_of_day)..((Time.current.at_end_of_day - 7.day).at_beginning_of_day)) }
 
   def self.looks(search, word)
     if search == "perfect_match"
