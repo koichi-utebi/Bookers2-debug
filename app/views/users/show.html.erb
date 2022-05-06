@@ -10,6 +10,32 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+      <h2>Compersion of the number of posts</h2>
+      <div class="table_width">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>today posts</th>
+              <th>previous day posts</th>
+              <th>today per previous day posts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @today_book.count %></td>
+              <td><%= @yesterday_book.count %></td>
+              <td>
+                <% if @yesterday_book.count == 0 %>
+                  There is no post from the previous day
+                <% else %>
+                  <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
+                  <%= (@the_day_before * 100).round %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

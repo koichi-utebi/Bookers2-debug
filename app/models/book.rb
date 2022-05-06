@@ -8,6 +8,9 @@ class Book < ApplicationRecord
   has_many :week_favorites, -> { where(created_at: ((Time.current.at_end_of_day - 6.day).at_beginning_of_day)..(Time.current.at_end_of_day)) }, class_name: 'Favorite'
   has_many :view_counts, dependent: :destroy
 
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+
   def self.looks(search, word)
     if search == "perfect_match"
       @book = Book.where("title LIKE?","#{word}")
