@@ -120,14 +120,3 @@
       });
     });
   </script>
-
-  <%= form_with url: user_search_path(@user), method: :get do |f| %>
-    <%= f.date_field :created_at %>
-    <%= f.submit '検索',calss: 'btn btn-primary' %>
-  <% end %>
-
-  <div id="search_result">
-    <% if @search_book.present? %>
-      <%= render 'search', search_book: @search_book %>
-    <% end %>
-  </div>
